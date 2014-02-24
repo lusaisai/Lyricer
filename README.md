@@ -36,3 +36,8 @@ Usually, you can create a function object around the move method and bind it to 
 		lrc.move(audio.currentTime);
 	} );
 ```
+
+There're 8 lines' lyrics before/after the current playing one, to change it, assgin a different value as follows.
+```javascript
+    lrc.showLines = 10;
+```

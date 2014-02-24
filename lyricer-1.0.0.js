@@ -4,7 +4,7 @@
 		this.divID = "lyricer"; // the default html container id
 		this.currentcss = "lyricer-current-line"; // this css for the line current playing
 		this.lineidPrefix = "lyricer-line"; // the id prefix for each line
-		this.totalShowLines = 8; //lines showing before and after; 
+		this.showLines = 8; //lines showing before and after; 
 		if (argument) {
 			this.setLrc(argument);
 			this.setHtml();
@@ -69,7 +69,7 @@
 		};
 
 		// hide the later ones
-		for (var i = this.totalShowLines; i < this.totalLines; i++) {
+		for (var i = this.showLines; i < this.totalLines; i++) {
 			document.getElementById(this.lineidPrefix + i).style.display = "none";
 		};
 	};
@@ -85,8 +85,8 @@
 	};
 
 	var moveToLine = function (self, line) {
-		var startShow = line - self.totalShowLines;
-		var endShow = line + self.totalShowLines;
+		var startShow = line - self.showLines;
+		var endShow = line + self.showLines;
 		for (var i = 0; i < self.totalLines; i++) {
 			var li = document.getElementById(self.lineidPrefix + i);
 			if ( i >= startShow && i <= endShow ) {
