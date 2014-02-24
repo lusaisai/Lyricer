@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Lyricer by lusaisai</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Lyricer</h1>
+        <h2>The LRC lyrics parser and shower for the web</h2>
+        <a href="https://github.com/lusaisai/Lyricer" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="lyricer" class="anchor" href="#lyricer"><span class="octicon octicon-link"></span></a>Lyricer</h1>
+
+<p>This is a simple standalone javascript library to parse and show LRC lyric in a web page.</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Include the js and css file in your page.</p>
+
+<div class="highlight highlight-html"><pre>    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"lyricer-1.0.0.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"lyricer-1.0.0.css"</span><span class="nt">&gt;</span>
+</pre></div>
+
+<p>In your js code, you can  create a Lyricer object, provding the LRC string as the argument, or leave it empty, it can be set/change later.</p>
+
+<div class="highlight highlight-javascript"><pre>    <span class="kd">var</span> <span class="nx">lrc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Lyricer</span><span class="p">(</span><span class="nx">lrctext</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">lrc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Lyricer</span><span class="p">();</span>
+    <span class="nx">lrc</span><span class="p">.</span><span class="nx">setLrc</span><span class="p">(</span><span class="nx">lrctext</span><span class="p">);</span>
+</pre></div>
+
+<p>In your page, you need to create an empty div with the default id 'lyricer'. The id can be changed through js code. This div is to place the html lyric.</p>
+
+<div class="highlight highlight-html"><pre>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"lyricer"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">lrc</span><span class="p">.</span><span class="nx">divID</span> <span class="o">=</span> <span class="s2">"yourid"</span><span class="p">;</span>
+</pre></div>
+
+<p>The main method is to move to a specific time in seconds. The following line moves the html lyric in your page to the line when the song plays at time 100 seconds.</p>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">lrc</span><span class="p">.</span><span class="nx">move</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</pre></div>
+
+<p>Usually, you can create a function object around the move method and bind it to the timeupdate event of an audio, for example,</p>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">audio</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span> <span class="s2">"timeupdate"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">lrc</span><span class="p">.</span><span class="nx">move</span><span class="p">(</span><span class="nx">audio</span><span class="p">.</span><span class="nx">currentTime</span><span class="p">);</span>
+    <span class="p">}</span> <span class="p">);</span>
+</pre></div>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/lusaisai/Lyricer/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/lusaisai/Lyricer/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/lusaisai/Lyricer"></a> is maintained by <a href="https://github.com/lusaisai">lusaisai</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
