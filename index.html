@@ -37,7 +37,7 @@
 <p>This is a simple standalone javascript library to parse and show LRC lyric in a web page.</p>
 
 <h2>
-<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Demo</h2>
 	<audio id="player" controls>
 	  <source src="resource/Only Time.mp3" type="audio/mpeg">
 	</audio>
@@ -67,7 +67,7 @@
     <span class="nx">lrc</span><span class="p">.</span><span class="nx">setLrc</span><span class="p">(</span><span class="nx">lrctext</span><span class="p">);</span>
 </pre></div>
 
-<p>In your page, you need to create an empty div with the default id 'lyricer'. The id can be changed through js code. This div is to place the html lyric.</p>
+<p>In your page, you need to create an empty div with the default id 'lyricer'. If you use a different id, you also need to change it in the js code. This div is to place the html lyric.</p>
 
 <div class="highlight highlight-html"><pre>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"lyricer"</span><span class="nt">&gt;&lt;/div&gt;</span>
 </pre></div>
@@ -87,7 +87,7 @@
     <span class="p">}</span> <span class="p">);</span>
 </pre></div>
 
-<p>There're 8 lines' lyrics before/after the current playing one by default, to change it, assgin a different value as follows.</p>
+<p>There're 8 lines' lyrics before/after the current playing one by default, to change it, assign a different value as follows.</p>
 
 <div class="highlight highlight-javascript"><pre>    <span class="nx">lrc</span><span class="p">.</span><span class="nx">showLines</span><span class="p"> = </span><span class="mi">10</span><span class="p">;</span>
 </pre></div>
