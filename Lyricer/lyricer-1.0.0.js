@@ -19,16 +19,15 @@
 		var tagRegex = /.*\[([a-z]+):(.*)\].*/;
 		var lrcRegex = /.*\[([0-9]+):([0-9.]+)\](.*)/;
 		var rawLrcArray = rawLrc.split(/[\r\n]/);
-		var tag;
 		for (var i = 0; i < rawLrcArray.length; i++) {
 			// handle tags first
-			tag = tagRegex.exec(rawLrcArray[i]);
+			var tag = tagRegex.exec(rawLrcArray[i]);
 			if ( tag && tag[0] ) {
 				this.tags[tag[1]] = tag[2];
 				continue;
 			}
 			// handle lrc
-			lrc = lrcRegex.exec(rawLrcArray[i]);
+			var lrc = lrcRegex.exec(rawLrcArray[i]);
 			if ( lrc && lrc[0] ) {
 				this.lrc.push( { "starttime": parseInt(lrc[1]) * 60 + parseFloat(lrc[2]), "line": lrc[3] } );
 			};
