@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <script src="Lyricer/lyricer-1.0.0.js"></script>
+    <link rel="stylesheet" href="Lyricer/lyricer-1.0.0.css">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -32,6 +34,21 @@
 <a name="lyricer" class="anchor" href="#lyricer"><span class="octicon octicon-link"></span></a>Lyricer</h1>
 
 <p>This is a simple standalone javascript library to parse and show LRC lyric in a web page.</p>
+
+<h2>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
+	<audio id="player" controls>
+	  <source src="resource/Only Time.mp3" type="audio/mpeg">
+	</audio>
+<div id="lyricer" style="height:320px;"></div>
+<script type="text/javascript">
+	var text = "[00:02.70]Only Time\n[00:04.70]enya\n[00:06.70]\n[00:12.66]Who can say where the road goes,\n[00:17.91]Where the day flows\n[00:20.65]Only time...\n[00:24.04]And who can say if your love grows,\n[00:29.34]As your heart chose\n[00:32.35]Only time...\n[00:34.13]\n[01:02.33]Who can say why your heart sighs,\n[01:07.12]As your love flies\n[01:10.06]Only time...\n[01:13.48]And who can say why your heart cries,\n[01:18.70]When your love dies\n[01:21.59]Only time...\n[01:23.70]\n[01:51.31]Who can say when the roads meet,\n[01:56.37]That love might be,\n[01:59.19]In your heart.\n[02:02.72]And who can say when the day sleeps,\n[02:07.93]If the night keeps all your heart\n[02:14.63]Night keeps all your heart...\n[02:18.83]\n[02:45.14]Who can say if your love grows,\n[02:50.05]As your heart chose\n[02:53.08]Only time...\n[02:56.26]And who can say where the road goes,\n[03:01.59]Where the day flows\n[03:04.63]Only time...\n[03:08.33]Who knows\n[03:10.35]Only time...\n[03:14.12]Who knows\n[03:16.33]Only time...\n[03:19.12]";
+	var lrc = new Lyricer(text);
+	var audio = document.getElementById("player");
+	audio.addEventListener( "timeupdate", function () {
+		lrc.move(audio.currentTime);
+	} );
+</script>
 
 <h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
