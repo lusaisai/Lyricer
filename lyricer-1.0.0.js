@@ -29,7 +29,7 @@
 			// handle lrc
 			var lrc = lrcRegex.exec(rawLrcArray[i]);
 			if ( lrc && lrc[0] ) {
-				this.lrc.push( { "starttime": parseInt(lrc[1]) * 60 + parseFloat(lrc[2]), "line": lrc[3] } );
+				this.lrc.push( { "starttime": parseInt(lrc[1],10) * 60 + parseFloat(lrc[2]), "line": lrc[3] } );
 			};
 		};
 
