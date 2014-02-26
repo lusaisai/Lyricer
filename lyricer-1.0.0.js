@@ -16,8 +16,9 @@
 		this.lrc = [];
 		this.rangeLrc = [];
 
-		var tagRegex = /.*\[([a-z]+):(.*)\].*/;
-		var lrcRegex = /.*\[([0-9]+):([0-9.]+)\](.*)/;
+		var tagRegex = /\[([a-z]+):(.*)\].*/;
+		var lrcAllRegex = /(\[[0-9.:\[\]]*\])+(.*)/;
+		var timeRegex = /\[([0-9]+):([0-9.]+)\]/;
 		var rawLrcArray = rawLrc.split(/[\r\n]/);
 		for (var i = 0; i < rawLrcArray.length; i++) {
 			// handle tags first
@@ -27,13 +28,19 @@
 				continue;
 			}
 			// handle lrc
-			var lrc = lrcRegex.exec(rawLrcArray[i]);
+			var lrc = lrcAllRegex.exec(rawLrcArray[i]);
 			if ( lrc && lrc[0] ) {
-				this.lrc.push( { "starttime": parseInt(lrc[1],10) * 60 + parseFloat(lrc[2]), "line": lrc[3] } );
+				var times = lrc[1].replace(/\]\[/g,"],[").split(",");
+				for (var j = 0; j < times.length; j++) {
+					var time = timeRegex.exec(times[j]);
+					if ( time && time[0] ) {
+						this.lrc.push( { "starttime": parseInt(time[1],10) * 60 + parseFloat(time[2]), "line": lrc[2] } );
+					};
+				};
 			};
 		};
 
-		// sort lrc array
+		//sort lrc array
 		this.lrc.sort(function (a,b) {
 			return a.starttime - b.starttime;
 		});

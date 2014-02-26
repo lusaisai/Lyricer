@@ -7,18 +7,11 @@
 	<link rel="stylesheet" href="lyricer-1.0.0.css">
 </head>
 <body>
-	<audio id="player" controls>
-	  <source src="Only Time.mp3" type="audio/mpeg">
-	</audio>
 	<div id="lyricer">
 	</div>
 	<script type="text/javascript">
-	var text = "[00:02.70]Only Time\n[00:04.70]enya\n[00:06.70]\n[00:12.66]Who can say where the road goes,\n[00:17.91]Where the day flows\n[00:20.65]Only time...\n[00:24.04]And who can say if your love grows,\n[00:29.34]As your heart chose\n[00:32.35]Only time...\n[00:34.13]\n[01:02.33]Who can say why your heart sighs,\n[01:07.12]As your love flies\n[01:10.06]Only time...\n[01:13.48]And who can say why your heart cries,\n[01:18.70]When your love dies\n[01:21.59]Only time...\n[01:23.70]\n[01:51.31]Who can say when the roads meet,\n[01:56.37]That love might be,\n[01:59.19]In your heart.\n[02:02.72]And who can say when the day sleeps,\n[02:07.93]If the night keeps all your heart\n[02:14.63]Night keeps all your heart...\n[02:18.83]\n[02:45.14]Who can say if your love grows,\n[02:50.05]As your heart chose\n[02:53.08]Only time...\n[02:56.26]And who can say where the road goes,\n[03:01.59]Where the day flows\n[03:04.63]Only time...\n[03:08.33]Who knows\n[03:10.35]Only time...\n[03:14.12]Who knows\n[03:16.33]Only time...\n[03:19.12]";
+	var text = "[ti:情网]\n[ar:张学友]\n[al:]\n\n[00:00.00]《情网》\n[00:07.50]\n[00:09.00]演唱：张学友\n[00:14.80]\n[00:16.30]请你再为我点上一盏烛光\n[00:24.17]因为我早已迷失了方向\n[00:32.05]我掩饰不住的慌张\n[00:36.01]在迫不及待地张望\n[00:40.01]生怕这一路是好梦一场\n[00:46.72]\n[02:06.30][00:47.81]而你是一张无边无际的网\n[02:14.40][00:55.54]轻易就把我困在网中央\n[02:21.90][01:03.58]我愈陷愈深愈迷惘\n[02:26.09][01:07.44]路愈走愈远愈漫长\n[02:30.08][01:11.44]如何我才能捉住你眼光\n[02:36.61][01:17.81]\n[03:09.15][02:37.70][01:19.00]情愿就这样守在你身旁\n[03:16.96][02:45.56][01:26.94]情愿就这样一辈子不忘\n[03:25.36][02:53.66][01:35.05]我打开爱情这扇窗\n[03:28.98][02:57.58][01:38.82]却看见长夜日凄凉\n[03:32.99][03:01.59][01:42.93]问你是否会舍得我心伤\n[03:41.00][03:08.19][01:50.80]\n[03:54.84]—— END ——\n";
 	var lrc = new Lyricer(text);
-	var audio = document.getElementById("player");
-	audio.addEventListener( "timeupdate", function () {
-		lrc.move(audio.currentTime);
-	} );
 	</script>
 </body>
 </html>
