@@ -46,6 +46,11 @@
 		});
 
 		// crate the range lrc array
+		// dummy lines
+		for (var i = 0; i < this.showLines; i++) {
+			this.rangeLrc.push( { "starttime": -1, "endtime": 0, "line": "&nbsp;" } );
+		};
+		// real data
 		var starttime = 0;
 		var line = "";
 		for (var i = 0; i < this.lrc.length; i++) {
@@ -55,6 +60,10 @@
 			line = this.lrc[i].line;
 		};
 		this.rangeLrc.push( { "starttime": starttime, "endtime": 999.99, "line": line } );
+		// dummy lines
+		for (var i = 0; i < this.showLines; i++) {
+			this.rangeLrc.push( { "starttime": -1, "endtime": 0, "line": "&nbsp;" } );
+		};
 		this.totalLines = this.rangeLrc.length;
 		this.setHtml();
 	};
