@@ -4,7 +4,7 @@
 		this.divID = "lyricer"; // the default html container id
 		this.currentcss = "lyricer-current-line"; // this css for the line current playing
 		this.lineidPrefix = "lyricer-line"; // the id prefix for each line
-		this.totalShowLines = 8; //lines showing before and after; 
+		this.showLines = 8; //lines showing before and after; 
 		if (argument) {
 			this.setLrc(argument);
 			this.setHtml();
@@ -16,8 +16,9 @@
 		this.lrc = [];
 		this.rangeLrc = [];
 
-		var tagRegex = /.*\[([a-z]+):(.*)\].*/;
-		var lrcRegex = /.*\[([0-9]+):([0-9.]+)\](.*)/;
+		var tagRegex = /\[([a-z]+):(.*)\].*/;
+		var lrcAllRegex = /(\[[0-9.:\[\]]*\])+(.*)/;
+		var timeRegex = /\[([0-9]+):([0-9.]+)\]/;
 		var rawLrcArray = rawLrc.split(/[\r\n]/);
 		for (var i = 0; i < rawLrcArray.length; i++) {
 			// handle tags first
@@ -27,18 +28,29 @@
 				continue;
 			}
 			// handle lrc
-			var lrc = lrcRegex.exec(rawLrcArray[i]);
+			var lrc = lrcAllRegex.exec(rawLrcArray[i]);
 			if ( lrc && lrc[0] ) {
-				this.lrc.push( { "starttime": parseInt(lrc[1]) * 60 + parseFloat(lrc[2]), "line": lrc[3] } );
+				var times = lrc[1].replace(/\]\[/g,"],[").split(",");
+				for (var j = 0; j < times.length; j++) {
+					var time = timeRegex.exec(times[j]);
+					if ( time && time[0] ) {
+						this.lrc.push( { "starttime": parseInt(time[1],10) * 60 + parseFloat(time[2]), "line": lrc[2] } );
+					};
+				};
 			};
 		};
 
-		// sort lrc array
+		//sort lrc array
 		this.lrc.sort(function (a,b) {
 			return a.starttime - b.starttime;
 		});
 
 		// crate the range lrc array
+		// dummy lines
+		for (var i = 0; i < this.showLines; i++) {
+			this.rangeLrc.push( { "starttime": -1, "endtime": 0, "line": "&nbsp;" } );
+		};
+		// real data
 		var starttime = 0;
 		var line = "";
 		for (var i = 0; i < this.lrc.length; i++) {
@@ -48,6 +60,10 @@
 			line = this.lrc[i].line;
 		};
 		this.rangeLrc.push( { "starttime": starttime, "endtime": 999.99, "line": line } );
+		// dummy lines
+		for (var i = 0; i < this.showLines; i++) {
+			this.rangeLrc.push( { "starttime": -1, "endtime": 0, "line": "&nbsp;" } );
+		};
 		this.totalLines = this.rangeLrc.length;
 		this.setHtml();
 	};
@@ -69,7 +85,7 @@
 		};
 
 		// hide the later ones
-		for (var i = this.totalShowLines; i < this.totalLines; i++) {
+		for (var i = this.showLines; i < this.totalLines; i++) {
 			document.getElementById(this.lineidPrefix + i).style.display = "none";
 		};
 	};
@@ -85,8 +101,8 @@
 	};
 
 	var moveToLine = function (self, line) {
-		var startShow = line - self.totalShowLines;
-		var endShow = line + self.totalShowLines;
+		var startShow = line - self.showLines;
+		var endShow = line + self.showLines;
 		for (var i = 0; i < self.totalLines; i++) {
 			var li = document.getElementById(self.lineidPrefix + i);
 			if ( i >= startShow && i <= endShow ) {
