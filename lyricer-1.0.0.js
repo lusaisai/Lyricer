@@ -7,7 +7,6 @@
 		this.showLines = 8; //lines showing before and after; 
 		if (argument) {
 			this.setLrc(argument);
-			this.setHtml();
 		};
 	};
 
@@ -65,28 +64,31 @@
 			this.rangeLrc.push( { "starttime": -1, "endtime": 0, "line": "&nbsp;" } );
 		};
 		this.totalLines = this.rangeLrc.length;
-		this.setHtml();
+
+		// set html and move to start
+		setHtml(this);
+		this.move(0);
 	};
 
-	Lyricer.prototype.setHtml = function() {
-		this.currentLine = 0;
+	var setHtml = function(self) {
+		self.currentLine = 0;
 		
-		var container = document.getElementById(this.divID);
+		var container = document.getElementById(self.divID);
 		container.innerHTML = "";
 		var ul = document.createElement("ul");
 		container.appendChild(ul);
-		for (var i = 0; i < this.totalLines; i++) {
+		for (var i = 0; i < self.totalLines; i++) {
 			var li = document.createElement("li");
-			li.innerHTML = this.rangeLrc[i].line;
+			li.innerHTML = self.rangeLrc[i].line;
 			if (!li.innerHTML) {li.innerHTML="&nbsp;"};
-			li.setAttribute("id", this.lineidPrefix + i);
-			if ( i == this.currentLine ) { li.className = this.currentcss };
+			li.setAttribute("id", self.lineidPrefix + i);
+			if ( i == self.currentLine ) { li.className = self.currentcss };
 			ul.appendChild(li);
 		};
 
 		// hide the later ones
-		for (var i = this.showLines; i < this.totalLines; i++) {
-			document.getElementById(this.lineidPrefix + i).style.display = "none";
+		for (var i = self.showLines; i < self.totalLines; i++) {
+			document.getElementById(self.lineidPrefix + i).style.display = "none";
 		};
 	};
 
