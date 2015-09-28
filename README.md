@@ -6,7 +6,7 @@ Usage
 -----
 Include the js and css file in your page.
 ```html
-    <script type="text/javascript" src="lyricer.min.js"></script>
+	<script type="text/javascript" src="lyricer.min.js"></script>
 	<link rel="stylesheet" href="lyricer.min.css">
 ```
 
@@ -23,7 +23,7 @@ In your js code, you can  create a Lyricer object, provding an object of options
 
 To set lrc text, run the following method,
 ```javascript
-lrc.setLrc(lrctext);
+	lrc.setLrc(lrctext);
 ```
 
 The main method is to move to a specific time in seconds. The following line moves the html lyrics in your page to the line when the song plays at time 100 seconds.
@@ -40,11 +40,11 @@ Usually, you can create a function object around the move method and bind it to 
 
 When you click a line of lyrics, it will generate a 'lyricerclick' event, which can tell you the starttime of that line. This feature can be used to seek the audio via lyrics.
 ```javascript
-window.addEventListener('lyricerclick', function(e){
-    if (e.detail.time > 0) {
-        audio.currentTime = e.detail.time;
-    }
-});
+	window.addEventListener('lyricerclick', function(e){
+	    if (e.detail.time > 0) {
+	        audio.currentTime = e.detail.time;
+	    }
+	});
 ```
 
 Options
