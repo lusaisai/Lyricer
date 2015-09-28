@@ -8,6 +8,9 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <script type="text/javascript" src="Lyricer-master/lyricer.min.js"></script>
+    <link rel="stylesheet" href="Lyricer-master/lyricer.min.css">
+    <link rel="icon" type="image/ico" href="resource/favicon.ico"/>
   </head>
   <body>
     <section class="page-header">
@@ -20,10 +23,32 @@
 
     <section class="main-content">
       <h1>
-<a id="lyricer" class="anchor" href="#lyricer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lyricer</h1>
+<a name="lyricer" class="anchor" href="#lyricer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lyricer</h1>
 
-<p>This is a simple standalone javascript library to parse and show LRC lyric in a web page.</p>
+<p>This is a simple standalone javascript library to parse and show LRC lyrics in a web page.</p>
 
+<h2>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h2>
+<audio id="player" controls>
+    <source src="resource/Love Me Harder.mp3" type="audio/mpeg">
+</audio>
+<div id="lyricer"></div>
+<script type="text/javascript">
+  var text = "[ti:Love Me Harder]\n[total:236220]\n[offset:0]\n[00:00.61]Ariana Grande、The Weeknd - Love Me Harder\n[00:03.21]Tell me something I need to know\n[00:07.72]Then take my breath and never let it go\n[00:12.76]If you just let me invade your space\n[00:17.48]I'll take the pleasure, take it with the pain\n[00:22.92]And defend the moment I bit my lip\n[00:27.78]Baby in that moment you'll know this is\n[00:32.67]Something bigger than us \n[00:34.22]And be a bliss\n[00:37.45]Give me a reason to believe it\n[00:41.05]'Cause if you want to keep me \n[00:44.12]You gotta, gotta, gotta, gotta, got to love me harder\n[00:50.74]And if you really need me\n[00:53.84]You gotta, gotta, gotta, gotta, got to love me harder\n[00:58.60]Baby, love me harder\n[01:03.85]Love me, love me, love me\n[01:08.70]Harder harder harder\n[01:10.85]I know your motives and you know mine\n[01:15.53]The ones that love me I tend to leave behind\n[01:20.63]If you know about me and choose to stay\n[01:25.13]Then take this pleasure and take it with the pain\n[01:30.77]And defend the moment you bite your lip\n[01:35.31]When I get you moanin you know it's real\n[01:40.47]Can you feel the preasure between your hips\n[01:45.42]I'll make it feel like the first time\n[01:48.94]Cause if you want to keep me \n[01:51.99]You gotta, gotta, gotta, gotta, got to love me harder\n[01:56.82](I'mma love you harder)\n[01:58.74]And if you really need me \n[02:01.80]You gotta, gotta, gotta, gotta, got to love me harder\n[02:06.55](Love love me harder)\n[02:11.59]Love me, love me, love me\n[02:16.53]Harder harder harder\n[02:21.45]Love me, love me, love me\n[02:26.23]Harder harder harder\n[02:30.19]So what will I do if I can't figure it out\n[02:34.28](figure it out)\n[02:35.23]You have to try try try again\n[02:39.91]So what will I do if I can't figure it out\n[02:44.54]I'm gonna leave leave leave 'cause\n[02:47.22]'Cause if you want to keep me \n[02:50.28]You gotta, gotta, gotta, gotta, got to love me harder\n[02:55.05](I'mma love you love you love you)\n[02:56.76]And if you really need me \n[02:59.92]You gotta, gotta, gotta, gotta, got to love me harder\n[03:04.47](Love me love me baby)\n[03:06.42]'Cause if you want to keep me \n[03:09.62]You gotta, gotta, gotta, gotta, got to love me harder\n[03:14.42](Hold me harder)\n[03:16.44]And if you really need me \n[03:19.31]You gotta, gotta, gotta, gotta, got to love me harder\n[03:24.18](I'mma love you harder)\n[03:29.36]Love me, love me, love me, love me\n[03:34.18]Harder, harder, harder\n[03:35.95]Oh, you got to love me, love me, baby\n[03:38.80]Love me, love me, love me\n[03:40.54]Just a little bit harder, harder, baby\n[03:43.86]Harder, harder, harder\n";
+  var audio = document.getElementById("player");
+  var lrc = new Lyricer();
+  lrc.setLrc(text);
+
+  audio.addEventListener( "timeupdate", function() {
+        lrc.move(audio.currentTime);
+  });
+
+  window.addEventListener('lyricerclick', function(e){
+    if (e.detail.time > 0) {
+        audio.currentTime = e.detail.time;
+    }
+  });
+</script>
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
