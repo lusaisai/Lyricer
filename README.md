@@ -49,6 +49,7 @@ window.addEventListener('lyricerclick', function(e){
 
 Options
 -----
+|Option|Explaination|
+|---|---|
 |showLines|There're 8 lines' lyrics before/after the current playing one, to change it, assgin a different value as follows.|
 |clickable|Turn on/off 'lyricerclick' feature|
-
