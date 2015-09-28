@@ -1,115 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link rel="icon" type="image/ico" href="resource/favicon.ico"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-    <script src="Lyricer/lyricer-1.0.0.js"></script>
-    <link rel="stylesheet" href="Lyricer/lyricer-1.0.0.css">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <title>Lyricer, javascript library, The LRC lyrics parser and shower for the web</title>
+    <meta charset="UTF-8">
+    <title>Lyricer by lusaisai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <h1>Lyricer</h1>
-        <h2>The LRC lyrics parser and shower for the web</h2>
-        <a href="https://github.com/lusaisai/Lyricer" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
+    <section class="page-header">
+      <h1 class="project-name">Lyricer</h1>
+      <h2 class="project-tagline">The LRC lyrics parser and shower for the web</h2>
+      <a href="https://github.com/lusaisai/Lyricer" class="btn">View on GitHub</a>
+      <a href="https://github.com/lusaisai/Lyricer/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/lusaisai/Lyricer/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h1>
-<a name="lyricer" class="anchor" href="#lyricer"><span class="octicon octicon-link"></span></a>Lyricer</h1>
+    <section class="main-content">
+      <h1>
+<a id="lyricer" class="anchor" href="#lyricer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lyricer</h1>
 
 <p>This is a simple standalone javascript library to parse and show LRC lyric in a web page.</p>
 
 <h2>
-<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Demo</h2>
-	<audio id="player" controls>
-	  <source src="resource/Only Time.mp3" type="audio/mpeg">
-	</audio>
-<div id="lyricer"></div>
-<script type="text/javascript">
-	var text = "[00:02.70]Only Time\n[00:04.70]enya\n[00:06.70]\n[00:12.66]Who can say where the road goes,\n[00:17.91]Where the day flows\n[00:20.65]Only time...\n[00:24.04]And who can say if your love grows,\n[00:29.34]As your heart chose\n[00:32.35]Only time...\n[00:34.13]\n[01:02.33]Who can say why your heart sighs,\n[01:07.12]As your love flies\n[01:10.06]Only time...\n[01:13.48]And who can say why your heart cries,\n[01:18.70]When your love dies\n[01:21.59]Only time...\n[01:23.70]\n[01:51.31]Who can say when the roads meet,\n[01:56.37]That love might be,\n[01:59.19]In your heart.\n[02:02.72]And who can say when the day sleeps,\n[02:07.93]If the night keeps all your heart\n[02:14.63]Night keeps all your heart...\n[02:18.83]\n[02:45.14]Who can say if your love grows,\n[02:50.05]As your heart chose\n[02:53.08]Only time...\n[02:56.26]And who can say where the road goes,\n[03:01.59]Where the day flows\n[03:04.63]Only time...\n[03:08.33]Who knows\n[03:10.35]Only time...\n[03:14.12]Who knows\n[03:16.33]Only time...\n[03:19.12]";
-	var lrc = new Lyricer(text);
-	var audio = document.getElementById("player");
-	audio.addEventListener( "timeupdate", function () {
-		lrc.move(audio.currentTime);
-	} );
-</script>
-
-<h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>Include the js and css file in your page.</p>
 
-<div class="highlight highlight-html"><pre>    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"lyricer-1.0.0.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"lyricer-1.0.0.css"</span><span class="nt">&gt;</span>
-</pre></div>
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>lyricer.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+    &lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>lyricer.min.css<span class="pl-pds">"</span></span>&gt;</pre></div>
 
-<p>In your js code, you can  create a Lyricer object, provding the LRC string as the argument, or leave it empty, it can be set/change later.</p>
+<p>In your page, you need to create an empty div with the default id 'lyricer'. This div is to place the html lyrics.</p>
 
-<div class="highlight highlight-javascript"><pre>    <span class="kd">var</span> <span class="nx">lrc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Lyricer</span><span class="p">(</span><span class="nx">lrctext</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">lrc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Lyricer</span><span class="p">();</span>
-    <span class="nx">lrc</span><span class="p">.</span><span class="nx">setLrc</span><span class="p">(</span><span class="nx">lrctext</span><span class="p">);</span>
-</pre></div>
+<div class="highlight highlight-text-html-basic"><pre>    &lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>lyricer<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
 
-<p>In your page, you need to create an empty div with the default id 'lyricer'. If you use a different id, you also need to change it in the js code. This div is to place the html lyric.</p>
+<p>In your js code, you can  create a Lyricer object, provding an object of options, or leave it empty.</p>
 
-<div class="highlight highlight-html"><pre>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"lyricer"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</pre></div>
+<div class="highlight highlight-source-js"><pre>    <span class="pl-k">var</span> lrc <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Lyricer</span>({<span class="pl-s"><span class="pl-pds">"</span>showLines<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">10</span>, <span class="pl-s"><span class="pl-pds">"</span>clickable<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>});
+    <span class="pl-k">var</span> lrc <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Lyricer</span>();</pre></div>
 
-<div class="highlight highlight-javascript"><pre>    <span class="nx">lrc</span><span class="p">.</span><span class="nx">divID</span> <span class="o">=</span> <span class="s2">"yourid"</span><span class="p">;</span>
-</pre></div>
+<p>To set lrc text, run the following method,</p>
 
-<p>The main method is to move to a specific time in seconds. The following line moves the html lyric in your page to the line when the song plays at time 100 seconds.</p>
+<div class="highlight highlight-source-js"><pre>lrc.setLrc(lrctext);</pre></div>
 
-<div class="highlight highlight-javascript"><pre>    <span class="nx">lrc</span><span class="p">.</span><span class="nx">move</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-</pre></div>
+<p>The main method is to move to a specific time in seconds. The following line moves the html lyrics in your page to the line when the song plays at time 100 seconds.</p>
+
+<div class="highlight highlight-source-js"><pre>    lrc.<span class="pl-c1">move</span>(<span class="pl-c1">100</span>);</pre></div>
 
 <p>Usually, you can create a function object around the move method and bind it to the timeupdate event of an audio, for example,</p>
 
-<div class="highlight highlight-javascript"><pre>    <span class="nx">audio</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span> <span class="s2">"timeupdate"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">lrc</span><span class="p">.</span><span class="nx">move</span><span class="p">(</span><span class="nx">audio</span><span class="p">.</span><span class="nx">currentTime</span><span class="p">);</span>
-    <span class="p">}</span> <span class="p">);</span>
-</pre></div>
+<div class="highlight highlight-source-js"><pre>    audio.addEventListener( <span class="pl-s"><span class="pl-pds">"</span>timeupdate<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>() {
+        lrc.<span class="pl-c1">move</span>(audio.currentTime);
+    });</pre></div>
 
-<p>There're 8 lines' lyrics before/after the current playing one by default, to change it, assign a different value as follows.</p>
+<p>When you click a line of lyrics, it will generate a 'lyricerclick' event, which can tell you the starttime of that line. This feature can be used to seek the audio via lyrics.</p>
 
-<div class="highlight highlight-javascript"><pre>    <span class="nx">lrc</span><span class="p">.</span><span class="nx">showLines</span><span class="p"> = </span><span class="mi">10</span><span class="p">;</span>
-</pre></div>
+<div class="highlight highlight-source-js"><pre><span class="pl-c1">window</span>.addEventListener(<span class="pl-s"><span class="pl-pds">'</span>lyricerclick<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">e</span>){
+    <span class="pl-k">if</span> (e.detail.time <span class="pl-k">&gt;</span> <span class="pl-c1">0</span>) {
+        audio.currentTime <span class="pl-k">=</span> e.detail.time;
+    }
+});</pre></div>
 
-        </section>
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
 
-        <aside id="sidebar">
-          <a href="https://github.com/lusaisai/Lyricer/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/lusaisai/Lyricer/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Explaination</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>showLines</td>
+<td>There're 8 lines' lyrics before/after the current playing one, to change it, assgin a different value as follows.</td>
+</tr>
+<tr>
+<td>clickable</td>
+<td>Turn on/off 'lyricerclick' feature</td>
+</tr>
+</tbody>
+</table>
 
-          <p class="repo-owner"><a href="https://github.com/lusaisai/Lyricer"></a> is maintained by <a href="https://github.com/lusaisai">lusaisai</a>.</p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/lusaisai/Lyricer">Lyricer</a> is maintained by <a href="https://github.com/lusaisai">lusaisai</a>.</span>
 
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
-    </div>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
 
   
   </body>
