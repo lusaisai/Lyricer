@@ -3,15 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Lyrcier Test</title>
-	<script type="text/javascript" src="lyricer-1.0.0.js"></script>
-	<link rel="stylesheet" href="lyricer-1.0.0.css">
+	<script type="text/javascript" src="lyricer.js"></script>
+	<link rel="stylesheet" href="lyricer.css">
 </head>
 <body>
 	<div id="lyricer">
 	</div>
 	<script type="text/javascript">
 	var text = "[ti:情网]\n[ar:张学友]\n[al:]\n\n[00:00.00]《情网》\n[00:07.50]\n[00:09.00]演唱：张学友\n[00:14.80]\n[00:16.30]请你再为我点上一盏烛光\n[00:24.17]因为我早已迷失了方向\n[00:32.05]我掩饰不住的慌张\n[00:36.01]在迫不及待地张望\n[00:40.01]生怕这一路是好梦一场\n[00:46.72]\n[02:06.30][00:47.81]而你是一张无边无际的网\n[02:14.40][00:55.54]轻易就把我困在网中央\n[02:21.90][01:03.58]我愈陷愈深愈迷惘\n[02:26.09][01:07.44]路愈走愈远愈漫长\n[02:30.08][01:11.44]如何我才能捉住你眼光\n[02:36.61][01:17.81]\n[03:09.15][02:37.70][01:19.00]情愿就这样守在你身旁\n[03:16.96][02:45.56][01:26.94]情愿就这样一辈子不忘\n[03:25.36][02:53.66][01:35.05]我打开爱情这扇窗\n[03:28.98][02:57.58][01:38.82]却看见长夜日凄凉\n[03:32.99][03:01.59][01:42.93]问你是否会舍得我心伤\n[03:41.00][03:08.19][01:50.80]\n[03:54.84]—— END ——\n";
-	var lrc = new Lyricer(text);
+	var lrc = new Lyricer();
+	lrc.setLrc(text);
+	window.addEventListener("lyricerclick", function(e){
+		console.log('clicked on ' + e.detail.time);
+	});
 	</script>
 </body>
 </html>
